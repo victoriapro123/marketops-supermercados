@@ -12,6 +12,7 @@
 
 # Archivos temporales
 tmp/
+marketops/
 *.log
 .DS_Store
 Thumbs.db
