@@ -1,0 +1,20 @@
+# Dependencias y compilaciones
+**/node_modules/
+**/dist/
+**/coverage/
+
+# Datos y configuracion local
+**/data/
+**/.env
+**/.env.*
+!**/.env.example
+
+# Archivos temporales
+tmp/
+*.log
+.DS_Store
+Thumbs.db
+
+# Herramientas y editores
+.vscode/
+.idea/
