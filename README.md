@@ -15,3 +15,4 @@ Interfaz estática para la primera entrega del proyecto grupal de gestión de su
 ## Ejecución
 
 Abre `index.html` directamente o utiliza un servidor web local.
+Get-history | Select-Object -ExpandProperty CommandLine | clip
