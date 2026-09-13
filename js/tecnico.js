@@ -9,7 +9,7 @@ let botonSucursales = document.querySelector('a[href="#sucursales"]');
 let botonIncidencias = document.querySelector('a[href="#incidencias"]');
 
 botonPanel.onclick = function(evento) {
-    evento.preventDefault(); // Esto evita que la página dé un "salto" hacia arriba
+    evento.preventDefault(); 
     
     seccionPanel.style.display = "block"; 
     seccionSucursales.style.display = "none";
