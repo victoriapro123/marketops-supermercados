@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel general</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h1>MarketOps</h1>
+
+    <nav>
+        <a href="tecnico.html">Panel general</a>
+        <a href="detalle-sucursal.html">Detalle de sucursal</a>
+        <a href="historial-incidencias.html">Historial de incidencias</a>
+        <a href="index.html">Cerrar sesion</a>
+    </nav>
+
+    <hr>
+
+    <h2>Panel general</h2>
+
+    <p>Total de sucursales: 3</p>
+    <p>Equipos con falla: 4</p>
+    <p>Equipos fuera de servicio: 2</p>
+
+    <label for="filtroSucursal">Filtrar por gravedad:</label>
+    <select id="filtroSucursal">
+        <option value="todos">Todas</option>
+        <option value="grave">Dos o mas fallas</option>
+        <option value="leve">Menos de dos fallas</option>
+    </select>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Sucursal</th>
+                <th>Cantidad de fallas</th>
+                <th>Accion</th>
+            </tr>
+        </thead>
+        <tbody id="sucursales">
+            <tr>
+                <td>Centro</td>
+                <td>2</td>
+                <td><a href="detalle-sucursal.html">Ver detalle</a></td>
+            </tr>
+            <tr>
+                <td>Norte</td>
+                <td>1</td>
+                <td><a href="detalle-sucursal.html">Ver detalle</a></td>
+            </tr>
+            <tr>
+                <td>Sur</td>
+                <td>3</td>
+                <td><a href="detalle-sucursal.html">Ver detalle</a></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script src="script.js"></script>
+</body>
+</html>

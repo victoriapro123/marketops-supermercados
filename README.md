@@ -1,5 +1,7 @@
 # MarketOps
 
-Prueba inicial del repositorio grupal.
+Interfaz web estatica para la gestion de soporte tecnico de supermercados.
 
-Para abrirla, ejecuta `index.html` en un navegador.
+La pagina contiene las vistas de encargado de sucursal, tecnico de soporte y administrador.
+
+Para abrirla, ejecute `index.html` en un navegador.

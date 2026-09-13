@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle de sucursal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h1>MarketOps</h1>
+
+    <nav>
+        <a href="tecnico.html">Panel general</a>
+        <a href="detalle-sucursal.html">Detalle de sucursal</a>
+        <a href="historial-incidencias.html">Historial de incidencias</a>
+        <a href="index.html">Cerrar sesion</a>
+    </nav>
+
+    <hr>
+
+    <h2>Detalle de sucursal</h2>
+
+    <label for="sucursal">Sucursal:</label>
+    <select id="sucursal">
+        <option>Centro</option>
+        <option>Norte</option>
+        <option>Sur</option>
+    </select>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Equipo</th>
+                <th>Tipo</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Caja 1</td>
+                <td>Caja</td>
+                <td>
+                    <select>
+                        <option selected>Funcionando</option>
+                        <option>Con falla</option>
+                        <option>Fuera de servicio</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Balanza 1</td>
+                <td>Balanza</td>
+                <td>
+                    <select>
+                        <option>Funcionando</option>
+                        <option selected>Con falla</option>
+                        <option>Fuera de servicio</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Impresora 1</td>
+                <td>Impresora</td>
+                <td>
+                    <select>
+                        <option>Funcionando</option>
+                        <option>Con falla</option>
+                        <option selected>Fuera de servicio</option>
+                    </select>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br>
+    <button id="guardarEstados">Guardar cambios</button>
+    <p id="mensaje"></p>
+
+    <script src="script.js"></script>
+</body>
+</html>

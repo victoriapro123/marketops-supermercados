@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestion de usuarios</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h1>MarketOps</h1>
+
+    <nav>
+        <a href="administrador.html">Gestion de usuarios</a>
+        <a href="index.html">Cerrar sesion</a>
+    </nav>
+
+    <hr>
+
+    <h2>Gestion de usuarios</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Correo</th>
+                <th>Rol</th>
+                <th>Sucursal</th>
+                <th>Accion</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Ana Perez</td>
+                <td>ana@marketops.cl</td>
+                <td>Encargado</td>
+                <td>Centro</td>
+                <td><button class="editar">Editar</button></td>
+            </tr>
+            <tr>
+                <td>Luis Soto</td>
+                <td>luis@marketops.cl</td>
+                <td>Tecnico</td>
+                <td>Todas</td>
+                <td><button class="editar">Editar</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Crear usuario</h3>
+
+    <form id="formularioUsuario">
+        <label for="nombreUsuario">Nombre:</label>
+        <input type="text" id="nombreUsuario" required>
+
+        <br><br>
+
+        <label for="correoUsuario">Correo:</label>
+        <input type="email" id="correoUsuario" required>
+
+        <br><br>
+
+        <label for="rolUsuario">Rol:</label>
+        <select id="rolUsuario" required>
+            <option value="">Seleccione un rol</option>
+            <option>Encargado</option>
+            <option>Tecnico</option>
+            <option>Administrador</option>
+        </select>
+
+        <br><br>
+
+        <label for="sucursalUsuario">Sucursal:</label>
+        <select id="sucursalUsuario" required>
+            <option>Centro</option>
+            <option>Norte</option>
+            <option>Sur</option>
+            <option>Todas</option>
+        </select>
+
+        <br><br>
+
+        <input type="submit" value="Guardar usuario">
+    </form>
+
+    <p id="mensaje"></p>
+
+    <script src="script.js"></script>
+</body>
+</html>
