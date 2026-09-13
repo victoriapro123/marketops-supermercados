@@ -1,26 +1,61 @@
-:root {
-  font-family: Arial, Helvetica, sans-serif;
-  color: #ffffff;
-  background: #0f1e32;
-}
-
-* {
-  box-sizing: border-box;
-}
-
 body {
-  min-height: 100vh;
-  margin: 0;
+    font-family: Arial, sans-serif;
+    margin: 30px;
 }
 
-main {
-  display: grid;
-  min-height: 100vh;
-  place-items: center;
+nav {
+    margin-bottom: 20px;
 }
 
-h1 {
-  margin: 0;
-  font-size: clamp(3rem, 10vw, 7rem);
-  letter-spacing: -0.04em;
+nav a {
+    margin-right: 15px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+input, select, textarea {
+    padding: 5px;
+}
+
+textarea {
+    width: 300px;
+    max-width: 100%;
+}
+
+button, input[type="submit"] {
+    padding: 6px 12px;
+}
+
+#mensaje {
+    font-weight: bold;
+}
+
+@media screen and (max-width: 600px) {
+    body {
+        margin: 15px;
+    }
+
+    nav a {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    table {
+        font-size: 13px;
+    }
 }

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportar falla</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h1>MarketOps</h1>
+
+    <nav>
+        <a href="encargado.html">Mi sucursal</a>
+        <a href="reporte-falla.html">Reportar falla</a>
+        <a href="historial-local.html">Historial local</a>
+        <a href="index.html">Cerrar sesion</a>
+    </nav>
+
+    <hr>
+
+    <h2>Reportar falla</h2>
+    <p>Sucursal Centro</p>
+
+    <form id="formularioFalla">
+        <label for="equipo">Equipo:</label>
+        <select id="equipo" required>
+            <option value="">Seleccione un equipo</option>
+            <option value="Caja 1">Caja 1</option>
+            <option value="Balanza 1">Balanza 1</option>
+            <option value="Impresora 1">Impresora 1</option>
+        </select>
+
+        <br><br>
+
+        <label for="descripcion">Descripcion de la falla:</label>
+        <br>
+        <textarea id="descripcion" rows="5" required></textarea>
+
+        <br><br>
+
+        <label for="fecha">Fecha del reporte:</label>
+        <input type="date" id="fecha" required>
+
+        <br><br>
+
+        <input type="submit" value="Enviar reporte">
+        <a href="encargado.html">Cancelar</a>
+    </form>
+
+    <p id="mensaje"></p>
+
+    <script src="script.js"></script>
+</body>
+</html>
