@@ -5,8 +5,6 @@
 1. Cada integrante trabaja solamente en su rama y en sus archivos asignados.
 2. Antes de comenzar, cada rama debe incorporar la última versión de `main`.
 3. Cada cambio debe tener un mensaje de commit breve y claro.
-4. Los cambios se integran mediante Pull Request.
-5. No se suben contraseñas, claves, dependencias ni archivos temporales.
 
 ## Archivos asignados
 
