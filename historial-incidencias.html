@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial de incidencias</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h1>MarketOps</h1>
+
+    <nav>
+        <a href="tecnico.html">Panel general</a>
+        <a href="detalle-sucursal.html">Detalle de sucursal</a>
+        <a href="historial-incidencias.html">Historial de incidencias</a>
+        <a href="index.html">Cerrar sesion</a>
+    </nav>
+
+    <hr>
+
+    <h2>Historial de incidencias</h2>
+
+    <label for="historialSucursal">Sucursal:</label>
+    <select id="historialSucursal">
+        <option value="todas">Todas</option>
+        <option value="centro">Centro</option>
+        <option value="norte">Norte</option>
+        <option value="sur">Sur</option>
+    </select>
+
+    <label for="fechaHistorial">Fecha:</label>
+    <input type="date" id="fechaHistorial">
+
+    <table>
+        <thead>
+            <tr>
+                <th>Sucursal</th>
+                <th>Equipo</th>
+                <th>Falla</th>
+                <th>Fecha de reporte</th>
+                <th>Fecha de resolucion</th>
+            </tr>
+        </thead>
+        <tbody id="incidencias">
+            <tr>
+                <td>Centro</td>
+                <td>Balanza 1</td>
+                <td>No enciende</td>
+                <td>10/09/2026 12:30</td>
+                <td>Pendiente</td>
+            </tr>
+            <tr>
+                <td>Norte</td>
+                <td>Caja 2</td>
+                <td>Error de conexion</td>
+                <td>08/09/2026 09:10</td>
+                <td>09/09/2026 10:00</td>
+            </tr>
+            <tr>
+                <td>Sur</td>
+                <td>Impresora 3</td>
+                <td>No imprime</td>
+                <td>07/09/2026 15:20</td>
+                <td>08/09/2026 11:15</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script src="script.js"></script>
+</body>
+</html>
