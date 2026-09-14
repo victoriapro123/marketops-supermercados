@@ -50,7 +50,7 @@ if (formularioLogin) {
         }
 
         if (rol == "administrador") {
-            window.location.href = "administrador.html";
+            window.location.href = "admin.html";
         }
     });
 }
