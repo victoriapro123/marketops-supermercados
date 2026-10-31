@@ -4,51 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reportar falla</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="encargado.css">
 </head>
 <body>
+    <header>
 
     <h1>MarketOps</h1>
 
-    <nav>
+    <nav aria-label="Menú del encargado">
         <a href="encargado.html">Mi sucursal</a>
-        <a href="reporte-falla.html">Reportar falla</a>
+        <a href="reporte-falla.html" aria-current="page">Reportar falla</a>
         <a href="historial-local.html">Historial local</a>
-        <a href="index.html">Cerrar sesion</a>
+        <a href="index.html">Cerrar sesión</a>
     </nav>
 
-    <hr>
+    </header>
+
+    <main>
 
     <h2>Reportar falla</h2>
     <p>Sucursal Centro</p>
 
     <form id="formularioFalla">
-        <label for="equipo">Equipo:</label>
-        <select id="equipo" required>
-            <option value="">Seleccione un equipo</option>
-            <option value="Caja 1">Caja 1</option>
-            <option value="Balanza 1">Balanza 1</option>
-            <option value="Impresora 1">Impresora 1</option>
-        </select>
+        <div class="campo">
+            <label for="equipo">Equipo:</label>
+            <select id="equipo" required>
+                <option value="">Seleccione un equipo</option>
+                <option value="Caja 1">Caja 1</option>
+                <option value="Balanza 1">Balanza 1</option>
+                <option value="Impresora 1">Impresora 1</option>
+            </select>
+        </div>
 
-        <br><br>
+        <div class="campo">
+            <label for="descripcion">Descripción de la falla:</label>
+            <textarea id="descripcion" rows="5" required></textarea>
+        </div>
 
-        <label for="descripcion">Descripcion de la falla:</label>
-        <br>
-        <textarea id="descripcion" rows="5" required></textarea>
+        <div class="campo">
+            <label for="fecha">Fecha del reporte:</label>
+            <input type="date" id="fecha" required>
+        </div>
 
-        <br><br>
-
-        <label for="fecha">Fecha del reporte:</label>
-        <input type="date" id="fecha" required>
-
-        <br><br>
-
-        <input type="submit" value="Enviar reporte">
-        <a href="encargado.html">Cancelar</a>
+        <div class="acciones">
+            <input type="submit" value="Enviar reporte">
+            <a href="encargado.html">Cancelar</a>
+        </div>
     </form>
 
-    <p id="mensaje"></p>
+    <p id="mensaje" role="status"></p>
+
+    </main>
 
     <script src="script.js"></script>
 </body>
