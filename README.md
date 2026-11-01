@@ -12,7 +12,5 @@ Interfaz estática para la primera entrega del proyecto grupal de gestión de su
 - `css/`: estilos propios de cada integrante.
 - `js/`: JavaScript propio de cada vista.
 
-## Ejecución
 
-Abre `index.html` directamente o utiliza un servidor web local.
-Get-history | Select-Object -ExpandProperty CommandLine | clip
+
