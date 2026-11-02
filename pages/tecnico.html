@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel general | MarketOps</title>
+  <link rel="stylesheet" href="../styles.css">
+<link rel="stylesheet" href="../css/tecnico.css">
+</head>
+<body class="tech-body">
+  <div class="tech-layout">
+    <aside class="tech-sidebar">
+      <a class="tech-brand" href="tecnico.html" aria-label="MarketOps: panel del técnico">
+        <span class="tech-brand-symbol">M</span>
+        <span class="tech-brand-text">MarketOps<small>Gestión de soporte</small></span>
+      </a>
+      <div class="tech-sidebar-label">ESPACIO DE TRABAJO</div>
+      <nav class="tech-nav" aria-label="Navegación del técnico">
+            <a class="tech-nav-link is-active" href="tecnico.html" aria-current="page"><span class="tech-nav-marker" aria-hidden="true"></span>Panel general</a>
+            <a class="tech-nav-link" href="detalle-sucursal.html"><span class="tech-nav-marker" aria-hidden="true"></span>Detalle de sucursal</a>
+            <a class="tech-nav-link" href="historial-incidencias.html"><span class="tech-nav-marker" aria-hidden="true"></span>Historial de incidencias</a>
+      </nav>
+      <div class="tech-sidebar-bottom">
+        <div class="tech-role-chip"><span class="tech-role-dot"></span> Técnico de soporte</div>
+        <a class="tech-signout" href="../index.html">Cerrar sesión</a>
+      </div>
+    </aside>
+    <div class="tech-main-shell">
+      <header class="tech-header">
+        <div class="tech-breadcrumb">MarketOps <span aria-hidden="true">/</span> Técnico de soporte</div>
+        <span class="tech-header-pill">Panel de monitoreo</span>
+      </header>
+      <main class="tech-main">
+        <div class="tech-page-heading">
+          <p class="tech-eyebrow">SOPORTE TÉCNICO</p>
+          <h1>Panel general</h1>
+          <p>Visualiza el estado operativo de los equipos de todas las sucursales.</p>
+        </div>
+        <section class="tech-summary" aria-label="Resumen de sucursales">
+          <div class="tech-metric"><span>Sucursales registradas</span><strong>3</strong><small>Datos de demostración</small></div>
+          <div class="tech-metric"><span>Equipos con problemas</span><strong>3</strong><small>Con falla o fuera de servicio</small></div>
+          <div class="tech-metric"><span>Sucursales sin alertas</span><strong>1</strong><small>Operación normal</small></div>
+        </section>
+        <section class="tech-card" aria-labelledby="sucursales-titulo">
+          <div class="tech-section-head">
+            <div><h2 id="sucursales-titulo">Estado de las sucursales</h2><p>Consulta los indicadores y entra al detalle de cada sucursal.</p></div>
+            <a class="tech-action-link" href="detalle-sucursal.html">Ver todos los equipos</a>
+          </div>
+          <div class="tech-controls">
+            <div class="tech-field"><label for="filtroSucursal">Filtrar por cantidad de problemas</label>
+              <select id="filtroSucursal" name="filtroSucursal">
+                <option value="todos">Todas las sucursales</option>
+                <option value="grave">2 o más equipos con problemas</option>
+                <option value="leve">0 o 1 equipo con problemas</option>
+              </select></div>
+          </div>
+          <div class="tech-table-scroll">
+            <table class="tech-table">
+              <thead><tr><th scope="col">Sucursal</th><th scope="col">Equipos con problemas</th><th scope="col">Estado general</th><th scope="col">Acceso</th></tr></thead>
+              <tbody id="sucursales">
+                <tr><td><span class="tech-cell-name">Centro</span><span class="tech-cell-sub">Sucursal 01</span></td><td>2</td><td><span class="tech-status tech-status-danger">Atención requerida</span></td><td><a href="detalle-sucursal.html" class="tech-row-link">Ver equipos</a></td></tr>
+                <tr><td><span class="tech-cell-name">Norte</span><span class="tech-cell-sub">Sucursal 02</span></td><td>1</td><td><span class="tech-status tech-status-warning">Revisar equipos</span></td><td><a href="detalle-sucursal.html" class="tech-row-link">Ver equipos</a></td></tr>
+                <tr><td><span class="tech-cell-name">Sur</span><span class="tech-cell-sub">Sucursal 03</span></td><td>0</td><td><span class="tech-status tech-status-success">Operativa</span></td><td><a href="detalle-sucursal.html" class="tech-row-link">Ver equipos</a></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <p class="tech-footnote">Los indicadores reflejan los estados guardados en este navegador.</p>
+      </main>
+    </div>
+  </div>
+  <script src="../js/script.js"></script>
+  <script src="../js/mejoras-tecnico.js"></script>
+</body>
+</html>

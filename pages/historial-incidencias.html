@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Historial de incidencias | MarketOps</title>
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../css/tecnico.css">
+</head>
+<body class="tech-body">
+  <div class="tech-layout">
+    <aside class="tech-sidebar">
+      <a class="tech-brand" href="tecnico.html" aria-label="MarketOps: panel del técnico">
+        <span class="tech-brand-symbol">M</span>
+        <span class="tech-brand-text">MarketOps<small>Gestión de soporte</small></span>
+      </a>
+      <div class="tech-sidebar-label">ESPACIO DE TRABAJO</div>
+      <nav class="tech-nav" aria-label="Navegación del técnico">
+            <a class="tech-nav-link" href="tecnico.html"><span class="tech-nav-marker" aria-hidden="true"></span>Panel general</a>
+            <a class="tech-nav-link" href="detalle-sucursal.html"><span class="tech-nav-marker" aria-hidden="true"></span>Detalle de sucursal</a>
+            <a class="tech-nav-link is-active" href="historial-incidencias.html" aria-current="page"><span class="tech-nav-marker" aria-hidden="true"></span>Historial de incidencias</a>
+      </nav>
+      <div class="tech-sidebar-bottom">
+        <div class="tech-role-chip"><span class="tech-role-dot"></span> Técnico de soporte</div>
+        <a class="tech-signout" href="../index.html">Cerrar sesión</a>
+      </div>
+    </aside>
+    <div class="tech-main-shell">
+      <header class="tech-header">
+        <div class="tech-breadcrumb">MarketOps <span aria-hidden="true">/</span> Técnico de soporte</div>
+        <span class="tech-header-pill">Panel de monitoreo</span>
+      </header>
+      <main class="tech-main">
+        <div class="tech-page-heading">
+          <p class="tech-eyebrow">SOPORTE TÉCNICO</p>
+          <h1>Historial de incidencias</h1>
+          <p>Consulta las fallas registradas y resueltas en las sucursales.</p>
+        </div>
+        <section class="tech-card" aria-labelledby="historial-titulo">
+          <div class="tech-section-head"><div><h2 id="historial-titulo">Registro de fallas</h2><p>Revisa la fecha del reporte y de la resolución de cada incidencia.</p></div><a class="tech-action-link" href="detalle-sucursal.html">Volver a equipos</a></div>
+          <div class="tech-controls">
+            <div class="tech-field"><label for="historialSucursal">Sucursal</label>
+              <select id="historialSucursal" name="historialSucursal"><option value="todas">Todas</option><option value="centro">Centro</option><option value="norte">Norte</option><option value="sur">Sur</option></select></div>
+            <div class="tech-field"><label for="fechaHistorial">Fecha del reporte</label><input type="date" id="fechaHistorial" name="fechaHistorial"></div>
+          </div>
+          <div class="tech-table-scroll">
+            <table class="tech-table">
+              <thead><tr><th scope="col">Sucursal</th><th scope="col">Equipo</th><th scope="col">Falla</th><th scope="col">Fecha de reporte</th><th scope="col">Fecha de resolución</th></tr></thead>
+              <tbody id="incidencias">
+                <tr><td class="tech-cell-name">Centro</td><td>Balanza 1</td><td>No enciende</td><td>10/09/2026 12:30</td><td><span class="tech-status tech-status-warning">Pendiente</span></td></tr>
+                <tr><td class="tech-cell-name">Norte</td><td>Caja 2</td><td>Error de conexión</td><td>08/09/2026 09:10</td><td>09/09/2026 10:00</td></tr>
+                <tr><td class="tech-cell-name">Sur</td><td>Impresora 3</td><td>No imprime</td><td>07/09/2026 15:20</td><td>08/09/2026 11:15</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <p class="tech-footnote">Los filtros permiten consultar incidencias por sucursal y fecha.</p>
+      </main>
+    </div>
+  </div>
+  <script src="../js/script.js"></script>
+  <script src="../js/mejoras-tecnico.js"></script>
+</body>
+</html>

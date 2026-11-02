@@ -46,7 +46,7 @@ if (formularioLogin) {
         }
 
         if (rol == "tecnico") {
-            window.location.href = "tecnico.html";
+            window.location.href = "pages/tecnico.html";
         }
 
         if (rol == "administrador") {
