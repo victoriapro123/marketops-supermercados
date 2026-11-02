@@ -1,82 +1,91 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Administración - MarketOps</title>
-
+    <meta name="theme-color" content="#0f172a">
+    <meta name="description" content="Panel de administración del sistema MarketOps">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" type="image/png" href="icons/icon-192.png">
+    <script defer src="admin.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="admin.css">
+    <title>Usuarios | MarketOps</title>
 </head>
+<body class="admin-view">
+    <div class="admin-layout" x-data="adminUsuarios()">
+        <aside class="admin-sidebar" aria-label="Navegación administrativa">
+            <a class="admin-brand" href="admin.html"><span class="admin-brand-icon">M</span><span>MarketOps<small>Administración</small></span></a>
+            <nav class="admin-nav" aria-label="Secciones">
+                <p class="admin-menu-label">MENÚ</p>
+                <a href="admin.html" aria-current="page">Gestión de usuarios</a>
+                <a href="index.html">Cambiar de usuario</a>
+            </nav>
+            <p class="admin-sidebar-note">Gestión de usuarios</p>
+        </aside>
 
-<body>
+        <div class="admin-content">
+            <header class="admin-topbar">
+                <div><h1>Administración</h1></div>
+                <div class="admin-top-actions"><span class="admin-demo-tag">Datos de prueba</span><a class="admin-logout" href="index.html">Cerrar sesión</a></div>
+            </header>
 
-    <header>
-        <h1>MarketOps</h1>
-    </header>
+            <main class="admin-workspace">
+                <div class="admin-intro"><div><p class="admin-eyebrow">Administración</p><h2>Gestión de usuarios</h2><p>Aquí puedes agregar, editar y eliminar usuarios.</p></div><a class="admin-primary" href="#formularioNuevoUsuario" @click="limpiarFormulario()">+ Nuevo usuario</a></div>
 
-    <main class="admin">
+                <section class="admin-stats" aria-label="Resumen de cuentas de prueba">
+                    <article class="admin-stat"><span>Usuarios registrados</span><strong x-text="usuarios.length">6</strong><small>Personal de la plataforma</small></article>
+                    <article class="admin-stat"><span>Encargados</span><strong x-text="contarRol('Encargado')">3</strong><small>Asignados a sucursales</small></article>
+                    <article class="admin-stat"><span>Técnicos</span><strong x-text="contarRol('Técnico')">2</strong><small>Soporte a equipos</small></article>
+                    <article class="admin-stat"><span>Administradores</span><strong x-text="contarRol('Administrador')">1</strong><small>Acceso general</small></article>
+                </section>
 
-        <h2>Gestión de usuarios</h2>
+                <section class="admin-panel" aria-labelledby="tituloListado">
+                    <div class="admin-panel-head"><div><h3 id="tituloListado">Usuarios del sistema</h3><p>Usuarios registrados en MarketOps.</p></div></div>
+                    <div class="admin-filters">
+                        <div class="admin-field"><label for="buscarUsuario">Buscar usuario</label><input id="buscarUsuario" x-model="buscar" type="search" placeholder="Nombre o correo electrónico" autocomplete="off"></div>
+                        <div class="admin-field"><label for="filtroRol">Filtrar por rol</label><select id="filtroRol" x-model="filtroRol"><option value="todos">Todos los roles</option><option value="Encargado">Encargado</option><option value="Técnico">Técnico</option><option value="Administrador">Administrador</option></select></div>
+                        <div class="admin-field"><label for="ordenUsuarios">Ordenar por</label><select id="ordenUsuarios" x-model="ordenar"><option value="nombre-asc">Nombre (A-Z)</option><option value="nombre-desc">Nombre (Z-A)</option><option value="rol">Rol</option><option value="sucursal">Sucursal</option></select></div>
+                    </div>
+                    <div class="admin-table-wrapper">
+                        <table class="admin-table"><thead><tr><th scope="col">Nombre</th><th scope="col">Correo</th><th scope="col">Rol</th><th scope="col">Sucursal</th><th scope="col">Acciones</th></tr></thead>
+                            <tbody id="tablaUsuarios">
+                                <template x-for="usuario in usuariosVisibles" :key="usuario.id">
+                                    <tr>
+                                        <td><strong x-text="usuario.nombre"></strong></td>
+                                        <td x-text="usuario.correo"></td>
+                                        <td><span x-text="usuario.rol"></span></td>
+                                        <td x-text="usuario.sucursal || '—'"></td>
+                                        <td class="admin-row-actions"><button type="button" class="admin-edit" @click="editarUsuario(usuario)">Editar</button><button type="button" class="admin-delete" @click="eliminarUsuario(usuario.id)">Eliminar</button></td>
+                                    </tr>
+                                </template>
+                                <tr x-show="usuariosVisibles.length === 0"><td colspan="5" style="text-align:center;color:#63748b">No se encontraron usuarios.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p id="mensajeTabla" class="admin-table-note" aria-live="polite" x-text="usuariosVisibles.length + ' de ' + usuarios.length + ' usuarios visibles.'"></p>
+                </section>
 
-        <button class="crear">Crear usuario</button>
-
-        <table>
-
-            <thead>
-                <tr>
-                    <th>Nombre</th>
-                    <th>Correo</th>
-                    <th>Rol</th>
-                    <th>Sucursal</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-
-            <tbody>
-
-                <tr>
-                    <td>Sebastián Pavez</td>
-                    <td>sebastian@marketops.cl</td>
-                    <td>Encargado</td>
-                    <td>La Reina</td>
-                    <td>
-                        <button>Editar</button>
-                        <button class="eliminar">Eliminar</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>José Pavez</td>
-                    <td>jose@marketops.cl</td>
-                    <td>Técnico</td>
-                    <td>-</td>
-                    <td>
-                        <button>Editar</button>
-                        <button class="eliminar">Eliminar</button>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>Victoria Rodríguez</td>
-                    <td>victoria@marketops.cl</td>
-                    <td>Administrador</td>
-                    <td>-</td>
-                    <td>
-                        <button>Editar</button>
-                        <button class="eliminar">Eliminar</button>
-                    </td>
-                </tr>
-
-            </tbody>
-
-        </table>
-
-    </main>
-
-    <script src="script.js"></script>
-
+                <section class="admin-panel admin-form-panel" id="formularioNuevoUsuario" aria-labelledby="tituloFormulario">
+                    <div class="admin-panel-head"><div><h3 id="tituloFormulario" x-text="editandoId === null ? 'Agregar usuario' : 'Editar usuario'"></h3><p>Completa los datos del usuario.</p></div></div>
+                    <form id="formularioUsuario" @submit.prevent="guardarUsuario()">
+                        
+                        <div class="admin-form-grid">
+                            <div class="admin-field"><label for="nombreUsuario">Nombre completo *</label><input type="text" name="nombre" id="nombreUsuario" x-model="form.nombre" minlength="3" maxlength="80" required placeholder="Ej.: María González" autocomplete="name"></div>
+                            <div class="admin-field"><label for="correoUsuario">Correo electrónico *</label><input type="email" name="correo" id="correoUsuario" x-model="form.correo" required maxlength="120" placeholder="nombre@marketops.cl" autocomplete="email"></div>
+                            <div class="admin-field"><label for="rolUsuario">Rol *</label><select name="rol" id="rolUsuario" x-model="form.rol" required><option value="">Seleccione un rol</option><option value="Encargado">Encargado de sucursal</option><option value="Técnico">Técnico de soporte</option><option value="Administrador">Administrador</option></select></div>
+                            <div class="admin-field"><label for="sucursalUsuario">Sucursal</label><select name="sucursal" id="sucursalUsuario" x-model="form.sucursal" :required="form.rol === 'Encargado'"><option value="">Sin asignar</option><option value="La Reina">La Reina</option><option value="La Florida">La Florida</option><option value="Centro">Centro</option><option value="Norte">Norte</option><option value="Sur">Sur</option></select><small>Obligatoria para encargados de sucursal.</small></div>
+                        </div>
+                        <p class="admin-form-help">* Los campos marcados son obligatorios.</p>
+                        <div class="admin-form-actions"><button type="submit" class="admin-primary" x-text="editandoId === null ? 'Guardar usuario' : 'Guardar cambios'"></button><button type="button" class="admin-secondary" id="cancelarEdicion" @click="limpiarFormulario()">Limpiar</button></div>
+                        <p class="admin-feedback" id="mensaje" aria-live="polite" :style="error ? 'color:#b64050' : 'color:#257c53'" x-text="mensaje"></p>
+                    </form>
+                </section>
+                <footer class="admin-footer">MarketOps</footer>
+            </main>
+        </div>
+    </div>
+    <script src="pwa.js"></script>
 </body>
-
 </html>
