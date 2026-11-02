@@ -5,7 +5,7 @@ if (filtro) {
         var filas = document.querySelectorAll("#equipos tr");
 
         filas.forEach(function (fila) {
-            var estado = fila.children[2].textContent.toLowerCase();
+            var estado = fila.children[2].textContent.trim().toLowerCase();
 
             if (filtro.value == "todos" || filtro.value == estado) {
                 fila.style.display = "";
@@ -16,6 +16,7 @@ if (filtro) {
     });
 }
 
+
 var formulario = document.getElementById("formularioFalla");
 
 if (formulario) {
@@ -25,6 +26,23 @@ if (formulario) {
         var respuesta = confirm("¿Desea enviar este reporte?");
 
         if (respuesta) {
+            var reporte = {
+                equipo: document.getElementById("equipo").value,
+                descripcion: document.getElementById("descripcion").value,
+                fecha: document.getElementById("fecha").value
+            };
+
+            var reportes = JSON.parse(
+                localStorage.getItem("marketops_reportes") || "[]"
+            );
+
+            reportes.push(reporte);
+
+            localStorage.setItem(
+                "marketops_reportes",
+                JSON.stringify(reportes)
+            );
+
             document.getElementById("mensaje").textContent =
                 "La falla fue registrada.";
 
@@ -32,6 +50,7 @@ if (formulario) {
         }
     });
 }
+
 
 var formularioLogin = document.getElementById("formularioLogin");
 
@@ -133,3 +152,20 @@ botonesEditar.forEach(function (boton) {
         alert("Se puede editar la cuenta seleccionada.");
     });
 });
+
+var tablaHistorial = document.getElementById("reportesGuardados");
+
+if (tablaHistorial) {
+    var reportes = JSON.parse(
+        localStorage.getItem("marketops_reportes") || "[]"
+    );
+
+    reportes.forEach(function (reporte) {
+        var fila = tablaHistorial.insertRow(0);
+
+        fila.insertCell(0).textContent = reporte.equipo;
+        fila.insertCell(1).textContent = reporte.descripcion;
+        fila.insertCell(2).textContent = reporte.fecha;
+        fila.insertCell(3).textContent = "Pendiente";
+    });
+}
