@@ -1,16 +1,7 @@
 # MarketOps
 
-Interfaz estática para la primera entrega del proyecto grupal de gestión de supermercados.
+Interfaz web estatica para la gestion de soporte tecnico de supermercados.
 
-## Organización
+La pagina contiene las vistas de encargado de sucursal, tecnico de soporte y administrador.
 
-- `index.html`: inicio de sesión y navegación demostrativa.
-- `pages/encargado.html`: trabajo de Victoria en `feature/encargado`.
-- `pages/tecnico.html`: trabajo del integrante técnico en `feature/tecnico`.
-- `pages/admin.html`: trabajo del integrante administrador en `feature/admin-responsive`.
-- `styles.css`: estilos compartidos. Solo se modifica con acuerdo del grupo.
-- `css/`: estilos propios de cada integrante.
-- `js/`: JavaScript propio de cada vista.
-
-
-
+Para abrirla, ejecute `index.html` en un navegador.
