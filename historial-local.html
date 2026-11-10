@@ -1,58 +1,15 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Historial local</title>
-    <link rel="stylesheet" href="encargado.css">
-</head>
-<body>
-    <header>
-
-    <h1>MarketOps</h1>
-
-    <nav aria-label="Menú del encargado">
-        <a href="encargado.html">Mi sucursal</a>
-        <a href="reporte-falla.html">Reportar falla</a>
-        <a href="historial-local.html" aria-current="page">Historial local</a>
-        <a href="index.html">Cerrar sesión</a>
-    </nav>
-
-    </header>
-
-    <main>
-
-    <h2>Historial local</h2>
-    <p>Sucursal Centro</p>
-
-    <div class="tabla" role="region" aria-label="Historial de fallas" tabindex="0">
-    <table>
-        <thead>
-            <tr>
-                <th>Equipo</th>
-                <th>Falla</th>
-                <th>Fecha de reporte</th>
-                <th>Fecha de resolución</th>
-            </tr>
-        </thead>
-        <tbody id="reportesGuardados">
-            <tr>
-                <td>Balanza 1</td>
-                <td>No enciende</td>
-                <td>10/09/2026</td>
-                <td><span class="estado falla">Pendiente</span></td>
-            </tr>
-            <tr>
-                <td>Caja 1</td>
-                <td>Error de conexión</td>
-                <td>08/09/2026</td>
-                <td>09/09/2026</td>
-            </tr>
-        </tbody>
-    </table>
-    </div>
-
-    </main>
-    <script src="script.js"></script>
-</body>
-</html>
+<html lang="es"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Historial local | MarketOps</title><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="roles.css">
+<link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icons/icon-192.png"><meta name="theme-color" content="#0f172a">
+    <script defer src="demo-roles.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script></head>
+<body class="roles-view" x-data="demoHistorial(true)">
+<header class="roles-header"><div class="roles-brand">M <strong>MarketOps</strong></div><span>Historial local</span><a href="index.html">Cerrar sesión</a></header>
+<nav class="roles-nav"><a href="encargado.html">Mi sucursal</a><a href="reporte-falla.html">Reportar falla</a><a href="historial-local.html">Historial local</a></nav>
+<main class="roles-main"><h1>Historial local</h1><p>Reportes registrados en sucursal Centro.</p>
+<div class="roles-card"><div class="roles-controls"><label>Buscar <input type="search" x-model="buscar" placeholder="Equipo o falla"></label><label>Fecha <input type="date" x-model="fecha"></label><button type="button" @click="fecha='';buscar=''">Limpiar filtros</button></div>
+<div class="roles-table-wrap"><table><thead><tr><th>Equipo</th><th>Falla</th><th>Fecha de reporte</th><th>Resolución</th></tr></thead>
+<tbody><template x-for="i in visibles" :key="i.id"><tr><td x-text="i.equipo"></td><td x-text="i.falla"></td><td x-text="i.fecha"></td><td x-text="i.resolucion"></td></tr></template>
+<tr x-show="visibles.length===0"><td colspan="4">No se encontraron reportes.</td></tr></tbody></table></div></div></main><script src="pwa.js"></script></body></html>

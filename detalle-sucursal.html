@@ -1,82 +1,18 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalle de sucursal</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-
-    <h1>MarketOps</h1>
-
-    <nav>
-        <a href="tecnico.html">Panel general</a>
-        <a href="detalle-sucursal.html">Detalle de sucursal</a>
-        <a href="historial-incidencias.html">Historial de incidencias</a>
-        <a href="index.html">Cerrar sesion</a>
-    </nav>
-
-    <hr>
-
-    <h2>Detalle de sucursal</h2>
-
-    <label for="sucursal">Sucursal:</label>
-    <select id="sucursal">
-        <option>Centro</option>
-        <option>Norte</option>
-        <option>Sur</option>
-    </select>
-
-    <table>
-        <thead>
-            <tr>
-                <th>Equipo</th>
-                <th>Tipo</th>
-                <th>Estado</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Caja 1</td>
-                <td>Caja</td>
-                <td>
-                    <select>
-                        <option selected>Funcionando</option>
-                        <option>Con falla</option>
-                        <option>Fuera de servicio</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>Balanza 1</td>
-                <td>Balanza</td>
-                <td>
-                    <select>
-                        <option>Funcionando</option>
-                        <option selected>Con falla</option>
-                        <option>Fuera de servicio</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>Impresora 1</td>
-                <td>Impresora</td>
-                <td>
-                    <select>
-                        <option>Funcionando</option>
-                        <option>Con falla</option>
-                        <option selected>Fuera de servicio</option>
-                    </select>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
-    <br>
-    <button id="guardarEstados">Guardar cambios</button>
-    <p id="mensaje"></p>
-
-    <script src="script.js"></script>
-</body>
-</html>
+<html lang="es"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Detalle de sucursal | MarketOps</title><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="roles.css">
+<link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icons/icon-192.png"><meta name="theme-color" content="#0f172a">
+    <script defer src="demo-roles.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script></head>
+<body class="roles-view" x-data="demoTecnico()">
+<header class="roles-header"><div class="roles-brand">M <strong>MarketOps</strong></div><span>Detalle de sucursal</span><a href="index.html">Cerrar sesión</a></header>
+<nav class="roles-nav"><a href="tecnico.html">Panel general</a><a href="detalle-sucursal.html">Detalle de sucursal</a><a href="historial-incidencias.html">Historial de incidencias</a></nav>
+<main class="roles-main"><h1>Detalle de sucursal</h1><p>Selecciona una sucursal y modifica el estado de sus equipos.</p>
+<div class="roles-card"><div class="roles-controls"><label>Sucursal <select x-model="sucursal"><option>Centro</option><option>Norte</option><option>Sur</option></select></label>
+<label>Buscar equipo <input type="search" x-model="buscar" placeholder="Nombre"></label><label>Ordenar <select x-model="orden"><option value="nombre">Nombre</option><option value="estado">Estado</option></select></label></div>
+<div class="roles-table-wrap"><table><thead><tr><th>Equipo</th><th>Tipo</th><th>Estado</th></tr></thead><tbody>
+<template x-for="e in equiposVisibles" :key="e.id"><tr><td x-text="e.nombre"></td><td x-text="e.tipo"></td>
+<td><select x-model="e.estado"><option>Funcionando</option><option>Con falla</option><option>Fuera de servicio</option></select></td></tr></template>
+<tr x-show="equiposVisibles.length===0"><td colspan="3">No se encontraron equipos.</td></tr></tbody></table></div>
+<button type="button" @click="guardar()">Guardar cambios</button><p aria-live="polite" x-text="mensaje"></p></div></main><script src="pwa.js"></script></body></html>

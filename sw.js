@@ -1,10 +1,10 @@
-const CACHE_NAME = 'marketops-e2-v3';
+const CACHE_NAME = 'marketops-integrado-v1';
 const ARCHIVOS = [
     './', './index.html', './admin.html', './admin.js', './styles.css', './admin.css',
     './script.js', './tecnico.html', './tecnico.js', './encargado.html',
     './detalle-sucursal.html', './historial-incidencias.html',
     './historial-local.html', './reporte-falla.html', './manifest.webmanifest',
-    './icons/icon-192.png', './icons/icon-512.png', './pwa.js'
+    './demo-roles.js', './roles.css', './icons/icon-192.png', './icons/icon-512.png', './pwa.js'
 ];
 self.addEventListener('install', function (evento) {
     evento.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(ARCHIVOS)));

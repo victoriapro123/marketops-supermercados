@@ -1,79 +1,19 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi sucursal</title>
-    <link rel="stylesheet" href="encargado.css">
-</head>
-<body>
-    <header>
-
-    <h1>MarketOps</h1>
-
-    <nav aria-label="Menú del encargado">
-        <a href="encargado.html" aria-current="page">Mi sucursal</a>
-        <a href="reporte-falla.html">Reportar falla</a>
-        <a href="historial-local.html">Historial local</a>
-        <a href="index.html">Cerrar sesión</a>
-    </nav>
-
-    </header>
-
-    <main>
-
-    <h2>Mi sucursal</h2>
-    <p>Sucursal Centro</p>
-
-    <label for="filtro">Filtrar por estado:</label>
-    <select id="filtro">
-        <option value="todos">Todos</option>
-        <option value="funcionando">Funcionando</option>
-        <option value="con falla">Con falla</option>
-        <option value="fuera de servicio">Fuera de servicio</option>
-    </select>
-
-    <div class="tabla" role="region" aria-label="Equipos de la sucursal" tabindex="0">
-    <table>
-        <thead>
-            <tr>
-                <th>Equipo</th>
-                <th>Tipo</th>
-                <th>Estado</th>
-            </tr>
-        </thead>
-        
-<tbody id="equipos">
-    <tr>
-        <td>Caja 1</td>
-        <td>Caja</td>
-        <td>
-            <span class="estado funcionando">Funcionando</span>
-        </td>
-    </tr>
-
-    <tr>
-        <td>Balanza 1</td>
-        <td>Balanza</td>
-        <td>
-            <span class="estado falla">Con falla</span>
-        </td>
-    </tr>
-
-    <tr>
-        <td>Impresora 1</td>
-        <td>Impresora</td>
-        <td>
-            <span class="estado fuera">Fuera de servicio</span>
-        </td>
-    </tr>
-</tbody>
-
-    </table>
-    </div>
-
-    </main>
-
-    <script src="script.js"></script>
-</body>
-</html>
+<html lang="es"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mi sucursal | MarketOps</title><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="roles.css">
+<link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icons/icon-192.png"><meta name="theme-color" content="#0f172a">
+    <script defer src="demo-roles.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script></head>
+<body class="roles-view" x-data="demoEncargado()">
+<header class="roles-header"><div class="roles-brand">M <strong>MarketOps</strong></div><span>Mi sucursal</span><a href="index.html">Cerrar sesión</a></header>
+<nav class="roles-nav"><a href="encargado.html">Mi sucursal</a><a href="reporte-falla.html">Reportar falla</a><a href="historial-local.html">Historial local</a></nav>
+<main class="roles-main"><h1>Mi sucursal</h1><p>Sucursal Centro — datos de prueba.</p>
+<div class="roles-card"><h2>Equipos registrados</h2><div class="roles-controls">
+<label>Buscar equipo <input type="search" x-model="buscar" placeholder="Nombre del equipo"></label>
+<label>Filtrar por estado <select x-model="filtro"><option value="todos">Todos</option><option value="funcionando">Funcionando</option><option value="con falla">Con falla</option><option value="fuera de servicio">Fuera de servicio</option></select></label>
+<label>Ordenar <select x-model="orden"><option value="nombre">Nombre</option><option value="estado">Estado</option></select></label></div>
+<div class="roles-table-wrap"><table><thead><tr><th>Equipo</th><th>Tipo</th><th>Estado</th></tr></thead>
+<tbody><template x-for="e in equiposVisibles" :key="e.id"><tr><td x-text="e.nombre"></td><td x-text="e.tipo"></td><td x-text="e.estado"></td></tr></template>
+<tr x-show="equiposVisibles.length===0"><td colspan="3">No hay resultados.</td></tr></tbody></table></div>
+<p x-text="equiposVisibles.length + ' equipos mostrados'"></p></div></main><script src="pwa.js"></script></body></html>

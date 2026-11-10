@@ -148,3 +148,72 @@ td button {
   }
 
 }
+
+/* --- Vista administrativa E2: mejora visual y responsive --- */
+body.admin-view { margin:0; min-height:100vh; background:#f4f7fb; color:#1f2b40; font-family:Arial,Helvetica,sans-serif; }
+.admin-view * {box-sizing:border-box;}
+.admin-view .admin-layout {display:grid;grid-template-columns:238px minmax(0,1fr);min-height:100vh;}
+.admin-view .admin-sidebar {background:#0e1b30;color:white;padding:29px 18px;display:flex;flex-direction:column;gap:34px;}
+.admin-view .admin-brand {color:white;display:flex;align-items:center;gap:12px;text-decoration:none;font-size:21px;font-weight:750;margin:0 8px;}
+.admin-view .admin-brand-icon {background:#3478ed;border-radius:12px;width:42px;height:42px;display:flex;align-items:center;justify-content:center;color:white;font-weight:800;}
+.admin-view .admin-brand small {display:block;color:#94accb;font-size:12px;font-weight:400;letter-spacing:.03em;margin-top:4px;}
+.admin-view .admin-nav {display:flex;flex-direction:column;gap:8px;margin:0;}
+.admin-view .admin-nav a {display:block;color:#b6c6db;border-radius:10px;padding:13px 14px;text-decoration:none;margin:0;font-size:14px;}
+.admin-view .admin-nav a[aria-current='page'],.admin-view .admin-nav a:hover {background:#203958;color:white;}
+.admin-view .admin-menu-label {font-size:10px;letter-spacing:.15em;color:#7e92b2;font-weight:bold;padding:0 12px;}
+.admin-view .admin-sidebar-note {margin:auto 12px 0;color:#7e92b2;font-size:12px;line-height:1.8;}
+.admin-view .admin-content {min-width:0;}
+.admin-view .admin-topbar {display:flex;align-items:center;justify-content:space-between;background:#fff;border-bottom:1px solid #e4eaf2;padding:20px 40px;gap:16px;}
+.admin-view .admin-eyebrow {font-size:12px;color:#657c9c;letter-spacing:.04em;font-weight:bold;margin:0 0 6px;}
+.admin-view .admin-topbar h1 {font-size:21px;margin:0;color:#172945;}
+.admin-view .admin-top-actions {display:flex;align-items:center;gap:18px;}
+.admin-view .admin-demo-tag {color:#3b6a93;background:#ecf4ff;border:1px solid #d3e6ff;font-size:12px;padding:8px 10px;border-radius:30px;white-space:nowrap;}
+.admin-view .admin-logout {font-size:13px;color:#284e88;text-decoration:none;font-weight:bold;white-space:nowrap;}
+.admin-view .admin-workspace {max-width:1480px;margin:0 auto;padding:34px 40px;}
+.admin-view .admin-intro {display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:25px;}
+.admin-view .admin-intro h2 {font-size:30px;letter-spacing:-.03em;margin:0 0 9px;color:#142640;}
+.admin-view .admin-intro p:not(.admin-eyebrow) {margin:0;color:#65758a;font-size:14px;}
+.admin-view .admin-primary {background:#286ce0;color:#fff;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;border:1px solid #286ce0;white-space:nowrap;border-radius:9px;padding:12px 18px;font-size:13px;font-weight:700;cursor:pointer;}
+.admin-view .admin-primary:hover {background:#1954b8;}
+.admin-view .admin-stats {display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:17px;margin-bottom:25px;}
+.admin-view .admin-stat {background:white;border:1px solid #e3eaf2;border-radius:13px;padding:20px 22px;box-shadow:0 4px 16px rgba(20,40,70,.035);display:flex;flex-direction:column;}
+.admin-view .admin-stat span {color:#526986;font-size:13px;}
+.admin-view .admin-stat strong {font-size:32px;color:#142640;margin:7px 0 4px;}
+.admin-view .admin-stat small {color:#8392a7;font-size:11px;line-height:1.4;}
+.admin-view .admin-panel {background:#fff;border:1px solid #e3eaf2;border-radius:13px;box-shadow:0 4px 16px rgba(20,40,70,.035);margin-bottom:23px;overflow:hidden;}
+.admin-view .admin-panel-head {padding:25px 27px 15px;}
+.admin-view .admin-panel-head h3 {font-size:18px;color:#172945;margin:0 0 7px;}
+.admin-view .admin-panel-head p {font-size:13px;color:#71819a;margin:0;}
+.admin-view .admin-filters {display:grid;grid-template-columns:minmax(220px,2fr) minmax(160px,1fr) minmax(160px,1fr);gap:16px;margin:0 27px 21px;}
+.admin-view .admin-field {min-width:0;display:flex;flex-direction:column;gap:7px;}
+.admin-view .admin-field label {font-size:12px;font-weight:bold;color:#41516b;margin:0;}
+.admin-view .admin-field input,.admin-view .admin-field select {height:43px;background:white;color:#24344d;border:1px solid #d5dfeb;border-radius:8px;font-size:13px;padding:9px 12px;width:100%;outline:none;}
+.admin-view .admin-field input:focus,.admin-view .admin-field select:focus {border-color:#286ce0;box-shadow:0 0 0 3px #286ce022;}
+.admin-view .admin-field input::placeholder {color:#9aa7b7;}
+.admin-view .admin-field small {color:#72829b;font-size:11px;}
+.admin-view .admin-table-wrapper {overflow-x:auto;width:100%;}
+.admin-view .admin-table {min-width:720px;margin:0;background:#fff;border-collapse:collapse;width:100%;}
+.admin-view .admin-table th {font-size:11px;text-transform:uppercase;letter-spacing:.04em;color:#60738e;background:#f7f9fc;border-bottom:1px solid #e8edf4;padding:15px 18px;}
+.admin-view .admin-table td {color:#45556d;background:#fff;border-bottom:1px solid #edf1f6;padding:15px 18px;font-size:13px;}
+.admin-view .admin-table td strong {color:#1e324e;}
+.admin-view .admin-table tr:hover td {background:#f8fbff;}
+.admin-view .admin-role {font-size:11px;font-weight:700;display:inline-block;border-radius:99px;padding:6px 9px;}
+.admin-view .role-admin {background:#f1ecff;color:#7651bb;}
+.admin-view .role-tecnico {background:#e8f3ff;color:#266daf;}
+.admin-view .role-encargado {background:#e7f8ee;color:#21794b;}
+.admin-view .admin-row-actions {white-space:nowrap;}
+.admin-view .admin-row-actions button {font-size:12px;padding:8px 10px;margin-right:6px;border:1px solid #dbe5f0;border-radius:7px;background:#f5f8fc;color:#275ca4;}
+.admin-view .admin-row-actions button:hover {background:#e5eefb;}
+.admin-view .admin-row-actions .admin-delete {color:#b64050;border-color:#f4d8dc;background:#fff4f5;}
+.admin-view .admin-row-actions .admin-delete:hover {background:#ffe4e8;}
+.admin-view .admin-table-note {font-size:12px;color:#71819a;margin:0;padding:16px 27px;}
+.admin-view .admin-form-panel form {padding:0 27px 22px;}
+.admin-view .admin-form-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px 24px;}
+.admin-view .admin-form-help {font-size:12px;color:#74859a;margin:19px 0;}
+.admin-view .admin-form-actions {display:flex;gap:10px;flex-wrap:wrap;}
+.admin-view .admin-secondary {background:#f1f4f8;color:#344861;border:1px solid #d9e3ee;font-size:13px;padding:12px 16px;border-radius:9px;font-weight:700;}
+.admin-view .admin-secondary:hover {background:#e4ebf4;}
+.admin-view .admin-feedback {font-size:13px;color:#257c53;margin:16px 0 0;min-height:1em;}
+.admin-view .admin-footer {color:#8a98ab;font-size:11px;margin:35px 0 10px;text-align:center;}
+@media(max-width:1040px){.admin-view .admin-stats{grid-template-columns:repeat(2,1fr)}.admin-view .admin-layout{grid-template-columns:190px minmax(0,1fr)}.admin-view .admin-topbar,.admin-view .admin-workspace{padding-left:24px;padding-right:24px;}}
+@media(max-width:720px){.admin-view .admin-layout{display:block}.admin-view .admin-sidebar{padding:13px 16px;gap:10px}.admin-view .admin-brand{font-size:17px}.admin-view .admin-nav{flex-direction:row;overflow:auto}.admin-view .admin-nav a{padding:10px}.admin-view .admin-menu-label,.admin-view .admin-sidebar-note{display:none}.admin-view .admin-topbar{padding:16px}.admin-view .admin-demo-tag{display:none}.admin-view .admin-workspace{padding:24px 16px}.admin-view .admin-intro{align-items:flex-start;flex-direction:column}.admin-view .admin-intro h2{font-size:26px}.admin-view .admin-filters,.admin-view .admin-form-grid{grid-template-columns:1fr}.admin-view .admin-panel-head{padding:20px 18px 14px}.admin-view .admin-filters{margin:0 18px 18px}.admin-view .admin-form-panel form{padding:0 18px 20px}.admin-view .admin-stat{padding:15px}.admin-view .admin-stat strong{font-size:26px}}

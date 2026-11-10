@@ -1,118 +1,19 @@
-<!doctype html>
-<html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Panel general | MarketOps</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <div class="app-shell">
-      <aside class="sidebar">
-        <a class="brand" href="index.html"><span class="brand-mark">M</span><span>MarketOps</span></a>
-        <nav aria-label="Navegación del técnico">
-          <a href="#panel" aria-current="page">Panel general</a>
-          <a href="#sucursales">Sucursales</a>
-          <a href="#incidencias">Incidencias</a>
-        </nav>
-      </aside>
-      <div class="app-main">
-        <header class="topbar"><h1>Panel general</h1><a href="index.html">Cerrar sesión</a></header>
-        <main class="workspace">
-
-        <section id="panel">
-            <h2>Estado Global de Sucursales</h2>
-            <div class="filtros" style="margin-bottom: 20px;">
-                <label>Filtrar:</label>
-                <select>
-                    <option>Todas</option>
-                    <option>Con fallas</option>
-                </select>
-            </div>
-
-            <div class="card" style="border-left: 5px solid red; margin-bottom: 10px; padding: 10px;">
-                <h3>Sucursal La Florida 🔴</h3>
-                <p>Estado: 2 equipos con falla</p>
-            </div>
-            <div class="card" style="border-left: 5px solid green; padding: 10px;">
-                <h3>Sucursal Centro 🟢</h3>
-                <p>Estado: 100% Operativa</p>
-            </div>
-        </section>
-
-        <section id="sucursales" style="display: none;">
-            <h2>Detalle de Equipos por Sucursal</h2>
-            <table border="1" style="width: 100%; text-align: left;">
-                <thead>
-                    <tr>
-                        <th>ID Equipo</th>
-                        <th>Tipo</th>
-                        <th>Estado Actual</th>
-                        <th>Acción</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>CAJ-01</td>
-                        <td>Caja</td>
-                        <td>
-                            <select>
-                                <option>Funcionando</option>
-                                <option selected>Con Falla</option>
-                                <option>Fuera de Servicio</option>
-                            </select>
-                        </td>
-
-                        <td><button onclick="confirmarActualizacion()">Actualizar</button></td>
-                    </tr>
-                    <!-- Agregamos una segunda fila simulada -->
-                    <tr>
-                        <td>IMP-04</td>
-                        <td>Impresora</td>
-                        <td>
-                            <select>
-                                <option selected>Funcionando</option>
-                                <option>Con Falla</option>
-                                <option>Fuera de Servicio</option>
-                            </select>
-                        </td>
-                        <td><button onclick="confirmarActualizacion()">Actualizar</button></td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-
-        <section id="incidencias" style="display: none;">
-            <h2>Historial de Fallas</h2>
-            <table border="1" style="width: 100%; text-align: left;">
-                <thead>
-                    <tr>
-                        <th>Fecha Reporte</th>
-                        <th>Fecha Resolución</th>
-                        <th>Sucursal</th>
-                        <th>Equipo</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>10-09-2026</td>
-                        <td>11-09-2026</td>
-                        <td>La Florida</td>
-                        <td>Balanza BAL-03</td>
-                    </tr>
-
-                    <tr>
-                        <td>08-09-2026</td>
-                        <td>08-09-2026</td>
-                        <td>Centro</td>
-                        <td>Caja CAJ-02</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-        </main>
-      </div>
-    </div>
-    <script src="tecnico.js"></script>
-  </body>
-</html>
+<!DOCTYPE html>
+<html lang="es"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel del técnico | MarketOps</title><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="roles.css">
+<link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icons/icon-192.png"><meta name="theme-color" content="#0f172a">
+    <script defer src="demo-roles.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script></head>
+<body class="roles-view" x-data="demoTecnico()">
+<header class="roles-header"><div class="roles-brand">M <strong>MarketOps</strong></div><span>Panel del técnico</span><a href="index.html">Cerrar sesión</a></header>
+<nav class="roles-nav"><a href="tecnico.html">Panel general</a><a href="detalle-sucursal.html">Detalle de sucursal</a><a href="historial-incidencias.html">Historial de incidencias</a></nav>
+<main class="roles-main"><h1>Panel general</h1><p>Estado de las sucursales y sus equipos.</p>
+<div class="roles-stats"><div>Sucursales <strong>3</strong></div><div>Equipos con problemas <strong x-text="datos.equipos.filter(e=>e.estado!=='Funcionando').length"></strong></div><div>Equipos funcionando <strong x-text="datos.equipos.filter(e=>e.estado==='Funcionando').length"></strong></div></div>
+<div class="roles-card"><h2>Estado de sucursales</h2><div class="roles-controls"><label>Mostrar <select x-model="filtro"><option value="todas">Todas</option><option value="fallas">Con fallas</option></select></label></div>
+<div class="roles-table-wrap"><table><thead><tr><th>Sucursal</th><th>Equipos con problemas</th><th>Acción</th></tr></thead><tbody>
+<template x-for="s in sucursales" :key="s.nombre"><tr><td x-text="s.nombre"></td><td x-text="s.problemas"></td><td><a :href="'detalle-sucursal.html?nombre='+s.nombre">Ver equipos</a></td></tr></template>
+<tr x-show="sucursales.length===0"><td colspan="3">No hay sucursales con fallas.</td></tr></tbody></table></div></div>
+<div class="roles-card"><h2>Actualización de equipos</h2><div class="roles-controls"><label>Sucursal <select x-model="sucursal"><option>Centro</option><option>Norte</option><option>Sur</option></select></label><label>Buscar equipo <input x-model="buscar" type="search" placeholder="Equipo"></label></div>
+<div class="roles-table-wrap"><table><thead><tr><th>Equipo</th><th>Estado</th><th>Acción</th></tr></thead><tbody>
+<template x-for="e in equiposVisibles" :key="e.id"><tr><td x-text="e.nombre"></td><td><select x-model="e.estado"><option>Funcionando</option><option>Con falla</option><option>Fuera de servicio</option></select></td><td><button @click="cambiar(e)">Actualizar</button></td></tr></template></tbody></table></div><p aria-live="polite" x-text="mensaje"></p></div></main><script src="pwa.js"></script></body></html>
