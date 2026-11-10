@@ -18,8 +18,9 @@
 
 @media (max-width: 470px) {
     .equipment-edit-table { table-layout: fixed; }
-    .equipment-edit-table th:first-child { width: 23%; }
-    .equipment-edit-table th:last-child { width: 28%; }
-    .equipment-edit-table select { width: 100%; padding: 6px 15px 6px 5px; font-size: .75rem; }
+    .tecnico-view .row-link span { display: none; }
+    .equipment-edit-table th, .equipment-edit-table td { padding-inline: 5px; }
+    .equipment-edit-table th:first-child, .equipment-edit-table th:last-child { width: 26%; }
+    .equipment-edit-table select { width: 100%; padding: 6px 5px; font-size: .75rem; }
     .equipment-edit-table button { padding-inline: 5px; font-size: .73rem; }
 }
