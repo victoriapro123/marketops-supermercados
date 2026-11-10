@@ -3,86 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#0f172a">
-    <meta name="description" content="Panel de administración del sistema MarketOps">
-    <link rel="manifest" href="manifest.webmanifest">
-    <link rel="icon" type="image/png" href="icons/icon-192.png">
-    <script defer src="admin.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <meta name="theme-color" content="#211a38">
+    <title>Gestión de usuarios | MarketOps</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="admin.css">
-    <title>Usuarios | MarketOps</title>
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" href="icons/icon-192.png" type="image/png">
+    <script defer src="admin.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 </head>
-<body class="admin-view">
-    <div class="admin-layout" x-data="adminUsuarios()">
-        <aside class="admin-sidebar" aria-label="Navegación administrativa">
-            <a class="admin-brand" href="admin.html"><span class="admin-brand-icon">M</span><span>MarketOps<small>Administración</small></span></a>
-            <nav class="admin-nav" aria-label="Secciones">
-                <p class="admin-menu-label">MENÚ</p>
-                <a href="admin.html" aria-current="page">Gestión de usuarios</a>
-                <a href="index.html">Cambiar de usuario</a>
+<body class="admin-view" x-data="adminUsuarios()">
+    <a class="skip-link" href="#contenido">Ir al contenido</a>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <a class="brand" href="admin.html"><span class="brand-mark" aria-hidden="true"></span>MarketOps</a>
+            <nav class="sidebar-nav" aria-label="Navegación principal">
+                <a class="nav-users" href="admin.html" aria-current="page">Gestión de usuarios</a>
             </nav>
-            <p class="admin-sidebar-note">Gestión de usuarios</p>
+            <div class="sidebar-bottom">
+                <a class="sidebar-exit" href="index.html">Cerrar sesión</a>
+            </div>
         </aside>
-
-        <div class="admin-content">
-            <header class="admin-topbar">
-                <div><h1>Administración</h1></div>
-                <div class="admin-top-actions"><span class="admin-demo-tag">Datos de prueba</span><a class="admin-logout" href="index.html">Cerrar sesión</a></div>
+        <div class="app-main">
+            <header class="topbar">
+                <span class="topbar-role">Administrador</span>
             </header>
-
-            <main class="admin-workspace">
-                <div class="admin-intro"><div><p class="admin-eyebrow">Administración</p><h2>Gestión de usuarios</h2><p>Aquí puedes agregar, editar y eliminar usuarios.</p></div><a class="admin-primary" href="#formularioNuevoUsuario" @click="limpiarFormulario()">+ Nuevo usuario</a></div>
-
-                <section class="admin-stats" aria-label="Resumen de cuentas de prueba">
-                    <article class="admin-stat"><span>Usuarios registrados</span><strong x-text="usuarios.length">6</strong><small>Personal de la plataforma</small></article>
-                    <article class="admin-stat"><span>Encargados</span><strong x-text="contarRol('Encargado')">3</strong><small>Asignados a sucursales</small></article>
-                    <article class="admin-stat"><span>Técnicos</span><strong x-text="contarRol('Técnico')">2</strong><small>Soporte a equipos</small></article>
-                    <article class="admin-stat"><span>Administradores</span><strong x-text="contarRol('Administrador')">1</strong><small>Acceso general</small></article>
+            <main class="workspace" id="contenido">
+                <div class="page-heading">
+                    <h1>Gestión de usuarios</h1>
+                    <a class="button" href="#formularioNuevoUsuario" @click="limpiarFormulario()">+ Nuevo usuario</a>
+                </div>
+                <section class="metrics metrics--four" aria-label="Resumen de usuarios">
+                    <div class="metric metric--primary"><span>Usuarios registrados</span><strong x-text="usuarios.length">6</strong></div>
+                    <div class="metric"><span>Encargados</span><strong x-text="contarRol('Encargado')">3</strong></div>
+                    <div class="metric"><span>Técnicos</span><strong x-text="contarRol('Técnico')">2</strong></div>
+                    <div class="metric"><span>Administradores</span><strong x-text="contarRol('Administrador')">1</strong></div>
                 </section>
-
-                <section class="admin-panel" aria-labelledby="tituloListado">
-                    <div class="admin-panel-head"><div><h3 id="tituloListado">Usuarios del sistema</h3><p>Usuarios registrados en MarketOps.</p></div></div>
-                    <div class="admin-filters">
-                        <div class="admin-field"><label for="buscarUsuario">Buscar usuario</label><input id="buscarUsuario" x-model="buscar" type="search" placeholder="Nombre o correo electrónico" autocomplete="off"></div>
-                        <div class="admin-field"><label for="filtroRol">Filtrar por rol</label><select id="filtroRol" x-model="filtroRol"><option value="todos">Todos los roles</option><option value="Encargado">Encargado</option><option value="Técnico">Técnico</option><option value="Administrador">Administrador</option></select></div>
-                        <div class="admin-field"><label for="ordenUsuarios">Ordenar por</label><select id="ordenUsuarios" x-model="ordenar"><option value="nombre-asc">Nombre (A-Z)</option><option value="nombre-desc">Nombre (Z-A)</option><option value="rol">Rol</option><option value="sucursal">Sucursal</option></select></div>
+                <section class="panel" aria-labelledby="tituloListado">
+                    <div class="panel-head"><h2 id="tituloListado">Usuarios del sistema</h2></div>
+                    <div class="filters">
+                        <div class="field"><label for="buscarUsuario">Buscar usuario</label><input id="buscarUsuario" x-model="buscar" type="search" placeholder="Nombre o correo electrónico" autocomplete="off"></div>
+                        <div class="field">
+                            <label for="filtroRol">Rol</label>
+                            <select id="filtroRol" x-model="filtroRol"><option value="todos">Todos los roles</option><option value="Encargado">Encargado</option><option value="Técnico">Técnico</option><option value="Administrador">Administrador</option></select>
+                        </div>
+                        <div class="field">
+                            <label for="ordenUsuarios">Ordenar por</label>
+                            <select id="ordenUsuarios" x-model="ordenar"><option value="nombre-asc">Nombre (A–Z)</option><option value="nombre-desc">Nombre (Z–A)</option><option value="rol">Rol</option><option value="sucursal">Sucursal</option></select>
+                        </div>
                     </div>
-                    <div class="admin-table-wrapper">
-                        <table class="admin-table"><thead><tr><th scope="col">Nombre</th><th scope="col">Correo</th><th scope="col">Rol</th><th scope="col">Sucursal</th><th scope="col">Acciones</th></tr></thead>
+                    <div class="table-scroll" tabindex="0" role="region" aria-labelledby="tituloListado">
+                        <table>
+                            <thead><tr><th scope="col">Nombre</th><th scope="col">Correo</th><th scope="col">Rol</th><th scope="col">Sucursal</th><th scope="col">Acciones</th></tr></thead>
                             <tbody id="tablaUsuarios">
                                 <template x-for="usuario in usuariosVisibles" :key="usuario.id">
                                     <tr>
-                                        <td><strong x-text="usuario.nombre"></strong></td>
+                                        <td x-text="usuario.nombre"></td>
                                         <td x-text="usuario.correo"></td>
-                                        <td><span x-text="usuario.rol"></span></td>
+                                        <td><span class="status" x-text="usuario.rol"></span></td>
                                         <td x-text="usuario.sucursal || '—'"></td>
-                                        <td class="admin-row-actions"><button type="button" class="admin-edit" @click="editarUsuario(usuario)">Editar</button><button type="button" class="admin-delete" @click="eliminarUsuario(usuario.id)">Eliminar</button></td>
+                                        <td class="table-actions">
+                                            <button type="button" class="button--secondary button--compact" @click="editarUsuario(usuario)">Editar</button>
+                                            <button type="button" class="button--danger button--compact" @click="eliminarUsuario(usuario.id)">Eliminar</button>
+                                        </td>
                                     </tr>
                                 </template>
-                                <tr x-show="usuariosVisibles.length === 0"><td colspan="5" style="text-align:center;color:#63748b">No se encontraron usuarios.</td></tr>
+                                <tr x-cloak x-show="usuariosVisibles.length === 0"><td colspan="5">No se encontraron usuarios.</td></tr>
                             </tbody>
                         </table>
                     </div>
-                    <p id="mensajeTabla" class="admin-table-note" aria-live="polite" x-text="usuariosVisibles.length + ' de ' + usuarios.length + ' usuarios visibles.'"></p>
+                    <p class="table-note" id="mensajeTabla" aria-live="polite" x-text="usuariosVisibles.length + ' de ' + usuarios.length + ' usuarios visibles.'"></p>
                 </section>
-
-                <section class="admin-panel admin-form-panel" id="formularioNuevoUsuario" aria-labelledby="tituloFormulario">
-                    <div class="admin-panel-head"><div><h3 id="tituloFormulario" x-text="editandoId === null ? 'Agregar usuario' : 'Editar usuario'"></h3><p>Completa los datos del usuario.</p></div></div>
+                <section class="panel" id="formularioNuevoUsuario" aria-labelledby="tituloFormulario">
+                    <div class="panel-head"><h2 id="tituloFormulario" x-text="editandoId === null ? 'Agregar usuario' : 'Editar usuario'">Agregar usuario</h2></div>
                     <form id="formularioUsuario" @submit.prevent="guardarUsuario()">
-                        
-                        <div class="admin-form-grid">
-                            <div class="admin-field"><label for="nombreUsuario">Nombre completo *</label><input type="text" name="nombre" id="nombreUsuario" x-model="form.nombre" minlength="3" maxlength="80" required placeholder="Ej.: María González" autocomplete="name"></div>
-                            <div class="admin-field"><label for="correoUsuario">Correo electrónico *</label><input type="email" name="correo" id="correoUsuario" x-model="form.correo" required maxlength="120" placeholder="nombre@marketops.cl" autocomplete="email"></div>
-                            <div class="admin-field"><label for="rolUsuario">Rol *</label><select name="rol" id="rolUsuario" x-model="form.rol" required><option value="">Seleccione un rol</option><option value="Encargado">Encargado de sucursal</option><option value="Técnico">Técnico de soporte</option><option value="Administrador">Administrador</option></select></div>
-                            <div class="admin-field"><label for="sucursalUsuario">Sucursal</label><select name="sucursal" id="sucursalUsuario" x-model="form.sucursal" :required="form.rol === 'Encargado'"><option value="">Sin asignar</option><option value="La Reina">La Reina</option><option value="La Florida">La Florida</option><option value="Centro">Centro</option><option value="Norte">Norte</option><option value="Sur">Sur</option></select><small>Obligatoria para encargados de sucursal.</small></div>
+                        <div class="form-grid">
+                            <div class="field">
+                                <label for="nombreUsuario">Nombre completo *</label>
+                                <input type="text" name="nombre" id="nombreUsuario" x-model="form.nombre" minlength="3" maxlength="80" required autocomplete="name">
+                            </div>
+                            <div class="field">
+                                <label for="correoUsuario">Correo electrónico *</label>
+                                <input type="email" name="correo" id="correoUsuario" x-model="form.correo" required maxlength="120" autocomplete="email">
+                            </div>
+                            <div class="field">
+                                <label for="rolUsuario">Rol *</label>
+                                <select name="rol" id="rolUsuario" x-model="form.rol" required><option value="">Selecciona un rol</option><option value="Encargado">Encargado de sucursal</option><option value="Técnico">Técnico de soporte</option><option value="Administrador">Administrador</option></select>
+                            </div>
+                            <div class="field">
+                                <label for="sucursalUsuario">Sucursal</label>
+                                <select name="sucursal" id="sucursalUsuario" x-model="form.sucursal" :required="form.rol === 'Encargado'"><option value="">Sin asignar</option><option value="La Reina">La Reina</option><option value="La Florida">La Florida</option><option value="Centro">Centro</option><option value="Norte">Norte</option><option value="Sur">Sur</option></select>
+                                <small>Obligatoria para encargados de sucursal.</small>
+                            </div>
                         </div>
-                        <p class="admin-form-help">* Los campos marcados son obligatorios.</p>
-                        <div class="admin-form-actions"><button type="submit" class="admin-primary" x-text="editandoId === null ? 'Guardar usuario' : 'Guardar cambios'"></button><button type="button" class="admin-secondary" id="cancelarEdicion" @click="limpiarFormulario()">Limpiar</button></div>
-                        <p class="admin-feedback" id="mensaje" aria-live="polite" :style="error ? 'color:#b64050' : 'color:#257c53'" x-text="mensaje"></p>
+                        <div class="form-actions">
+                            <button type="submit" x-text="editandoId === null ? 'Guardar usuario' : 'Guardar cambios'">Guardar usuario</button>
+                            <button type="button" class="button--secondary" id="cancelarEdicion" @click="limpiarFormulario()">Limpiar</button>
+                        </div>
+                        <p id="mensaje" class="form-feedback" role="status" :style="error ? 'color:#b64050' : 'color:#257c53'" x-text="mensaje"></p>
                     </form>
                 </section>
-                <footer class="admin-footer">MarketOps</footer>
             </main>
         </div>
     </div>

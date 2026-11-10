@@ -1,18 +1,69 @@
 <!DOCTYPE html>
-<html lang="es"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Detalle de sucursal | MarketOps</title><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="roles.css">
-<link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icons/icon-192.png"><meta name="theme-color" content="#0f172a">
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#211a38">
+    <title>Detalle de sucursal | MarketOps</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="roles.css">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" href="icons/icon-192.png" type="image/png">
     <script defer src="demo-roles.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script></head>
-<body class="roles-view" x-data="demoTecnico()">
-<header class="roles-header"><div class="roles-brand">M <strong>MarketOps</strong></div><span>Detalle de sucursal</span><a href="index.html">Cerrar sesión</a></header>
-<nav class="roles-nav"><a href="tecnico.html">Panel general</a><a href="detalle-sucursal.html">Detalle de sucursal</a><a href="historial-incidencias.html">Historial de incidencias</a></nav>
-<main class="roles-main"><h1>Detalle de sucursal</h1><p>Selecciona una sucursal y modifica el estado de sus equipos.</p>
-<div class="roles-card"><div class="roles-controls"><label>Sucursal <select x-model="sucursal"><option>Centro</option><option>Norte</option><option>Sur</option></select></label>
-<label>Buscar equipo <input type="search" x-model="buscar" placeholder="Nombre"></label><label>Ordenar <select x-model="orden"><option value="nombre">Nombre</option><option value="estado">Estado</option></select></label></div>
-<div class="roles-table-wrap"><table><thead><tr><th>Equipo</th><th>Tipo</th><th>Estado</th></tr></thead><tbody>
-<template x-for="e in equiposVisibles" :key="e.id"><tr><td x-text="e.nombre"></td><td x-text="e.tipo"></td>
-<td><select x-model="e.estado"><option>Funcionando</option><option>Con falla</option><option>Fuera de servicio</option></select></td></tr></template>
-<tr x-show="equiposVisibles.length===0"><td colspan="3">No se encontraron equipos.</td></tr></tbody></table></div>
-<button type="button" @click="guardar()">Guardar cambios</button><p aria-live="polite" x-text="mensaje"></p></div></main><script src="pwa.js"></script></body></html>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="tecnico-view" x-data="demoTecnico()">
+    <a class="skip-link" href="#contenido">Ir al contenido</a>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <a class="brand" href="tecnico.html"><span class="brand-mark" aria-hidden="true"></span>MarketOps</a>
+            <nav class="sidebar-nav" aria-label="Navegación principal">
+                <a class="nav-dashboard" href="tecnico.html">Panel general</a>
+                <a class="nav-equipment" href="detalle-sucursal.html" aria-current="page">Detalle de sucursal</a>
+                <a class="nav-history" href="historial-incidencias.html">Historial de incidencias</a>
+            </nav>
+            <div class="sidebar-bottom">
+                <a class="sidebar-exit" href="index.html">Cerrar sesión</a>
+            </div>
+        </aside>
+        <div class="app-main">
+            <header class="topbar">
+                <span class="topbar-role">Técnico de soporte</span>
+            </header>
+            <main class="workspace" id="contenido">
+                <div class="page-heading"><h1>Detalle de sucursal</h1></div>
+                <section class="panel" aria-labelledby="tituloEquipos">
+                    <div class="panel-head"><h2 id="tituloEquipos">Equipos de la sucursal</h2></div>
+                    <div class="filters">
+                        <div class="field"><label for="sucursal">Sucursal</label><select id="sucursal" x-model="sucursal"><option>Centro</option><option>Norte</option><option>Sur</option></select></div>
+                        <div class="field"><label for="buscarEquipo">Buscar equipo</label><input id="buscarEquipo" type="search" x-model="buscar" placeholder="Nombre del equipo"></div>
+                        <div class="field"><label for="ordenEquipos">Ordenar por</label><select id="ordenEquipos" x-model="orden"><option value="nombre">Nombre</option><option value="estado">Estado</option></select></div>
+                    </div>
+                    <div class="table-scroll" tabindex="0" role="region" aria-labelledby="tituloEquipos">
+                        <table>
+                            <thead><tr><th scope="col">Equipo</th><th scope="col">Tipo</th><th scope="col">Estado</th></tr></thead>
+                            <tbody>
+                                <template x-for="e in equiposVisibles" :key="e.id">
+                                    <tr>
+                                        <td x-text="e.nombre"></td>
+                                        <td x-text="e.tipo"></td>
+                                        <td>
+                                            <select aria-label="Estado del equipo" x-model="e.estado">
+                                                <option>Funcionando</option><option>Con falla</option><option>Fuera de servicio</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                </template>
+                                <tr x-cloak x-show="equiposVisibles.length===0"><td colspan="3">No se encontraron equipos.</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="form-actions"><button type="button" @click="guardar()">Guardar cambios</button></div>
+                    <p class="form-feedback" role="status" x-text="mensaje"></p>
+                </section>
+            </main>
+        </div>
+    </div>
+    <script src="pwa.js"></script>
+</body>
+</html>

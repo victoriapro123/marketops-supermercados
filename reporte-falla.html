@@ -1,18 +1,71 @@
 <!DOCTYPE html>
-<html lang="es"><head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Reportar falla | MarketOps</title><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="roles.css">
-<link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icons/icon-192.png"><meta name="theme-color" content="#0f172a">
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#211a38">
+    <title>Reportar falla | MarketOps</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="roles.css">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" href="icons/icon-192.png" type="image/png">
     <script defer src="demo-roles.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script></head>
-<body class="roles-view" x-data="demoReporte()">
-<header class="roles-header"><div class="roles-brand">M <strong>MarketOps</strong></div><span>Reportar falla</span><a href="index.html">Cerrar sesión</a></header>
-<nav class="roles-nav"><a href="encargado.html">Mi sucursal</a><a href="reporte-falla.html">Reportar falla</a><a href="historial-local.html">Historial local</a></nav>
-<main class="roles-main"><h1>Reportar falla</h1><p>Completa el reporte para la sucursal Centro.</p>
-<div class="roles-card"><form @submit.prevent="guardar()" class="roles-form">
-<label>Equipo *<select x-model="equipo" required><option value="">Selecciona un equipo</option>
-<template x-for="e in datos.equipos.filter(e=>e.sucursal==='Centro')" :key="e.id"><option :value="e.nombre" x-text="e.nombre"></option></template></select></label>
-<label>Descripción de la falla *<textarea x-model="descripcion" minlength="5" rows="4" required placeholder="Describe lo que ocurrió"></textarea></label>
-<label>Fecha *<input type="date" x-model="fecha" required></label>
-<div><button type="submit">Enviar reporte</button><a class="roles-secondary" href="encargado.html">Cancelar</a></div>
-<p aria-live="polite" x-text="mensaje"></p></form></div></main><script src="pwa.js"></script></body></html>
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+</head>
+<body class="encargado-view" x-data="demoReporte()">
+    <a class="skip-link" href="#contenido">Ir al contenido</a>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <a class="brand" href="encargado.html"><span class="brand-mark" aria-hidden="true"></span>MarketOps</a>
+            <nav class="sidebar-nav" aria-label="Navegación principal">
+                <a class="nav-equipment" href="encargado.html">Mi sucursal</a>
+                <a class="nav-report" href="reporte-falla.html" aria-current="page">Reportar falla</a>
+                <a class="nav-history" href="historial-local.html">Historial local</a>
+            </nav>
+            <div class="sidebar-bottom">
+                <a class="sidebar-exit" href="index.html">Cerrar sesión</a>
+            </div>
+        </aside>
+        <div class="app-main">
+            <header class="topbar">
+                <span class="topbar-role">Encargado de sucursal</span>
+            </header>
+            <main class="workspace" id="contenido">
+                <div class="page-heading">
+                    <div><h1>Reportar falla</h1><p>Sucursal Centro</p></div>
+                </div>
+                <section class="panel panel--form" aria-labelledby="tituloReporte">
+                    <div class="panel-head"><h2 id="tituloReporte">Datos del reporte</h2></div>
+                    <form @submit.prevent="guardar()">
+                        <div class="form-grid">
+                            <div class="field">
+                                <label for="equipo">Equipo</label>
+                                <select id="equipo" x-model="equipo" required>
+                                    <option value="">Selecciona un equipo</option>
+                                    <template x-for="e in datos.equipos.filter(e=>e.sucursal==='Centro')" :key="e.id">
+                                        <option :value="e.nombre" x-text="e.nombre"></option>
+                                    </template>
+                                </select>
+                            </div>
+                            <div class="field">
+                                <label for="fecha">Fecha del reporte</label>
+                                <input id="fecha" type="date" x-model="fecha" required>
+                            </div>
+                            <div class="field field--wide">
+                                <label for="descripcion">Descripción de la falla</label>
+                                <textarea id="descripcion" x-model="descripcion" minlength="5" rows="5" required></textarea>
+                            </div>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit">Enviar reporte</button>
+                            <a class="button button--secondary" href="encargado.html">Cancelar</a>
+                        </div>
+                        <p class="form-feedback" role="status" x-text="mensaje"></p>
+                    </form>
+                </section>
+            </main>
+        </div>
+    </div>
+    <script src="pwa.js"></script>
+</body>
+</html>

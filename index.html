@@ -3,42 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciar sesion</title>
+    <meta name="theme-color" content="#211a38">
+    <title>Acceso | MarketOps</title>
     <link rel="stylesheet" href="styles.css">
-    <meta name="theme-color" content="#0f172a">
     <link rel="manifest" href="manifest.webmanifest">
-    <link rel="icon" type="image/png" href="icons/icon-192.png">
+    <link rel="icon" href="icons/icon-192.png" type="image/png">
 </head>
-<body>
-
-    <h1>MarketOps</h1>
-    <h2>Iniciar sesion</h2>
-
-    <form id="formularioLogin">
-        <label for="correo">Correo:</label>
-        <input type="email" id="correo" required>
-
-        <br><br>
-
-        <label for="contrasena">Contraseña:</label>
-        <input type="password" id="contrasena" required>
-
-        <br><br>
-
-        <label for="rol">Rol:</label>
-        <select id="rol" required>
-            <option value="">Seleccione un rol</option>
-            <option value="encargado">Encargado de sucursal</option>
-            <option value="tecnico">Tecnico de soporte</option>
-            <option value="administrador">Administrador</option>
-        </select>
-
-        <br><br>
-
-        <input type="submit" value="Ingresar">
-    </form>
-
-    <p id="mensaje"></p>
+<body class="login-page">
+    <main class="login-layout">
+        <section class="login-cover" aria-label="MarketOps">
+            <div class="brand"><span class="brand-mark" aria-hidden="true"></span>MarketOps</div>
+            <svg class="login-art" viewBox="0 0 460 400" fill="none" aria-hidden="true">
+                <defs>
+                    <pattern id="grid" width="28" height="28" patternUnits="userSpaceOnUse">
+                        <path d="M28 0H0V28" stroke="#a897d1" stroke-opacity=".24"/>
+                    </pattern>
+                    <linearGradient id="card" x1="80" y1="55" x2="385" y2="355" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#443466"/><stop offset="1" stop-color="#2a2042"/>
+                    </linearGradient>
+                </defs>
+                <rect x="2" y="2" width="456" height="396" rx="26" fill="url(#grid)"/>
+                <rect x="2" y="2" width="456" height="396" rx="26" stroke="#9c8dc6" stroke-opacity=".27"/>
+                <path d="M67 117 124 166M333 213l54 54M152 264l-48 58M319 106l40-37" stroke="#ac98de" stroke-width="2" stroke-dasharray="4 6"/>
+                <rect x="84" y="87" width="292" height="220" rx="21" fill="url(#card)" stroke="#7963aa"/>
+                <path d="M84 135h292" stroke="#7963aa"/>
+                <circle cx="108" cy="112" r="4" fill="#dbccff"/><circle cx="123" cy="112" r="4" fill="#9c80dc"/><circle cx="138" cy="112" r="4" fill="#9c80dc"/>
+                <path d="M113 255h234M113 221h234M113 187h234" stroke="#b9a6ea" stroke-opacity=".2"/>
+                <path d="M113 250l46-28 41 11 44-55 37 17 56-39" stroke="#dafa8a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="244" cy="178" r="6" fill="#dafa8a"/><circle cx="337" cy="156" r="6" fill="#dafa8a"/>
+                <rect x="38" y="80" width="60" height="60" rx="17" fill="#e6dbff"/>
+                <path d="M51 107h34m-30 0v17h26v-17m-26 0 4-11h18l4 11m-16 17v-9h6v9" stroke="#493286" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <rect x="355" y="243" width="66" height="66" rx="18" fill="#dafa8a"/>
+                <path d="m375 276 9 9 17-18" stroke="#26330f" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="104" cy="322" r="8" fill="#b69bea"/><circle cx="359" cy="69" r="7" fill="#dafa8a"/>
+            </svg>
+        </section>
+        <section class="login-access" aria-labelledby="tituloAcceso">
+            <div class="login-form">
+                <h1 id="tituloAcceso">Iniciar sesión</h1>
+                <form id="formularioLogin">
+                    <div class="field">
+                        <label for="correo">Correo electrónico</label>
+                        <input type="email" id="correo" required autocomplete="off" placeholder="usuario@ejemplo.com">
+                    </div>
+                    <div class="field">
+                        <label for="contrasena">Contraseña</label>
+                        <input type="password" id="contrasena" required autocomplete="off">
+                    </div>
+                    <div class="field">
+                        <label for="rol">Rol</label>
+                        <select id="rol" required>
+                            <option value="">Selecciona un rol</option>
+                            <option value="encargado">Encargado de sucursal</option>
+                            <option value="tecnico">Técnico de soporte</option>
+                            <option value="administrador">Administrador</option>
+                        </select>
+                    </div>
+                    <button class="button login-submit" type="submit">Ingresar <span aria-hidden="true">→</span></button>
+                </form>
+            </div>
+        </section>
+    </main>
 
     <script src="script.js"></script>
     <script src="pwa.js"></script>

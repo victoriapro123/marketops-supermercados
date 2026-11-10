@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <view id="panel" viewBox="0 0 16 16"/>
+  <view id="equipment" viewBox="16 0 16 16"/>
+  <view id="history" viewBox="32 0 16 16"/>
+  <view id="report" viewBox="48 0 16 16"/>
+  <view id="users" viewBox="64 0 16 16"/>
+  <view id="exit" viewBox="80 0 16 16"/>
+  <path d="M2 2h5v5H2zm7 0h5v5H9zM2 9h5v5H2zm7 0h5v5H9z"/>
+  <path d="M18 2h12v9H18zm3 12h6m-3-3v3"/>
+  <circle cx="40" cy="8" r="6"/><path d="M40 5v3l2 1.5"/>
+  <path d="M51 2h6l4 4v8H51zm6 0v4h4m-5 2v4m-2-2h4"/>
+  <circle cx="70" cy="5" r="2.5"/><path d="M65 14v-1a4 4 0 0 1 4-4h2a4 4 0 0 1 4 4v1m0-11a2 2 0 0 1 0 4m2 3a3 3 0 0 1 2 3v1"/>
+  <path d="M87 3h-4v10h4m3-8 3 3-3 3m-4-3h7"/>
+</svg>
