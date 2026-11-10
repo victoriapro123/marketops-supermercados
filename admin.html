@@ -41,7 +41,7 @@
                 </section>
                 <section class="panel" aria-labelledby="tituloListado">
                     <div class="panel-head"><h2 id="tituloListado">Usuarios del sistema</h2></div>
-                    <div class="filters">
+                    <div class="filters" x-cloak>
                         <div class="field"><label for="buscarUsuario">Buscar usuario</label><input id="buscarUsuario" x-model="buscar" type="search" placeholder="Nombre o correo electrónico" autocomplete="off"></div>
                         <div class="field">
                             <label for="filtroRol">Rol</label>
@@ -76,7 +76,7 @@
                 </section>
                 <section class="panel" id="formularioNuevoUsuario" aria-labelledby="tituloFormulario">
                     <div class="panel-head"><h2 id="tituloFormulario" x-text="editandoId === null ? 'Agregar usuario' : 'Editar usuario'">Agregar usuario</h2></div>
-                    <form id="formularioUsuario" @submit.prevent="guardarUsuario()">
+                    <form id="formularioUsuario" x-cloak @submit.prevent="guardarUsuario()">
                         <div class="form-grid">
                             <div class="field">
                                 <label for="nombreUsuario">Nombre completo *</label>

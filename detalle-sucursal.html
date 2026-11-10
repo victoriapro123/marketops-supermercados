@@ -34,7 +34,7 @@
                 <div class="page-heading"><h1>Detalle de sucursal</h1></div>
                 <section class="panel" aria-labelledby="tituloEquipos">
                     <div class="panel-head"><h2 id="tituloEquipos">Equipos de la sucursal</h2></div>
-                    <div class="filters">
+                    <div class="filters" x-cloak>
                         <div class="field"><label for="sucursal">Sucursal</label><select id="sucursal" x-model="sucursal"><option>Centro</option><option>Norte</option><option>Sur</option></select></div>
                         <div class="field"><label for="buscarEquipo">Buscar equipo</label><input id="buscarEquipo" type="search" x-model="buscar" placeholder="Nombre del equipo"></div>
                         <div class="field"><label for="ordenEquipos">Ordenar por</label><select id="ordenEquipos" x-model="orden"><option value="nombre">Nombre</option><option value="estado">Estado</option></select></div>
@@ -58,7 +58,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="form-actions"><button type="button" @click="guardar()">Guardar cambios</button></div>
+                    <div class="form-actions" x-cloak><button type="button" @click="guardar()">Guardar cambios</button></div>
                     <p class="form-feedback" role="status" x-text="mensaje"></p>
                 </section>
             </main>

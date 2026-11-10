@@ -37,7 +37,7 @@
                 </div>
                 <section class="panel" aria-labelledby="tituloHistorial">
                     <div class="panel-head"><h2 id="tituloHistorial">Reportes de fallas</h2></div>
-                    <div class="filters">
+                    <div class="filters" x-cloak>
                         <div class="field"><label for="buscarFalla">Buscar</label><input id="buscarFalla" type="search" x-model="buscar" placeholder="Equipo o falla"></div>
                         <div class="field"><label for="fechaFalla">Fecha del reporte</label><input id="fechaFalla" type="date" x-model="fecha"></div>
                         <button class="button--secondary" type="button" @click="fecha='';buscar=''">Limpiar filtros</button>

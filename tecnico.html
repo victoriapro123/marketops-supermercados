@@ -39,7 +39,7 @@
                 </section>
                 <section class="panel" aria-labelledby="tituloSucursales">
                     <div class="panel-head"><h2 id="tituloSucursales">Estado de las sucursales</h2></div>
-                    <div class="filters">
+                    <div class="filters" x-cloak>
                         <div class="field">
                             <label for="filtrarSucursales">Mostrar sucursales</label>
                             <select id="filtrarSucursales" x-model="filtro"><option value="todas">Todas</option><option value="fallas">Con fallas</option></select>
@@ -59,7 +59,7 @@
                 </section>
                 <section class="panel" aria-labelledby="tituloActualizar">
                     <div class="panel-head"><h2 id="tituloActualizar">Actualización de equipos</h2></div>
-                    <div class="filters">
+                    <div class="filters" x-cloak>
                         <div class="field"><label for="sucursal">Sucursal</label><select id="sucursal" x-model="sucursal"><option>Centro</option><option>Norte</option><option>Sur</option></select></div>
                         <div class="field"><label for="buscarEquipo">Buscar equipo</label><input id="buscarEquipo" type="search" x-model="buscar" placeholder="Nombre del equipo"></div>
                     </div>
